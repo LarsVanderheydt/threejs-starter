@@ -1,0 +1,26 @@
+@mixin grid($columns, $selector, $gutter, $prev_columuns: '') {
+  @if ($prev_columuns == '') {
+    $prev_columuns: $columns;
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+
+  #{$selector} {
+    margin-right: $gutter;
+    margin-bottom: $gutter;
+    width: calc((100% - #{$gutter} * (#{$columns} - 1)) / #{$columns});
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      width: calc(((100% - #{$gutter} * (#{$columns} - 1)) / #{$columns}) - .5px);
+    }
+  }
+
+  #{$selector}:nth-child(#{$prev_columuns}n) {
+    margin-right: $gutter;
+  }
+
+  #{$selector}:nth-child(#{$columns}n) {
+    margin-right: 0;
+  }
+}

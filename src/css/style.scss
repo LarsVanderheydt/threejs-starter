@@ -1,0 +1,28 @@
+@import './reset';
+@import './variables/colors';
+@import './_icon';
+@import './variables/_icons';
+@import './mixins/_iconize';
+@import './mixins/_rem';
+
+
+html {
+    font-size: 100%;
+}
+
+////////////////////////////////////
+/// here starts the real stuff  ////
+////////////////////////////////////
+
+.container {
+    max-width: 102rem;
+    margin: 0 auto;
+}
+
+canvas {
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
