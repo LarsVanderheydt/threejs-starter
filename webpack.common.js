@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpackDashboard = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
 const hasAPI = false;
 
@@ -43,6 +44,14 @@ module.exports = {
     extensions: [`.js`, `.css`, `.ts`],
   },
 
+  devServer: {
+    https: true,
+    stats: {
+      children: false,
+      modules: false
+    }
+  },
+
   module: {
     rules: [
       {
@@ -76,8 +85,16 @@ module.exports = {
     ],
   },
 
-  plugins: [copy, new CleanWebpackPlugin([dir]), new webpackDashboard(), new ExtractTextPlugin({ // define where to save the file
-    filename: 'css/[name].bundle.css',
-    allChunks: true,
-  })],
+  plugins: [
+    copy,
+    new CleanWebpackPlugin([dir]),
+    new webpackDashboard(),
+    new webpack.ProvidePlugin({
+      THREE: 'three'
+    }),
+    new ExtractTextPlugin({ // define where to save the file
+      filename: 'css/[name].bundle.css',
+      allChunks: true,
+    })
+  ],
 };

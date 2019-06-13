@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import Scene from './classes/scene';
 import Helpers from './classes/helpers';
 
