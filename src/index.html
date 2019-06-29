@@ -25,8 +25,42 @@
     <footer>
 
     </footer>
+      {# uniform vec3 uColor; // we declare the uniform
+
+      void main(){
+        gl_FragColor = vec4(uColor, 1);
+      } #}
 
 
+    <script type="x-shader/x-fragment" id="fragment">
+
+      uniform float time;
+      uniform vec2 resolution;
+      uniform vec2 mouse;
+
+      void main( void ) {
+        vec2 p = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+        p += vec2(cos(1.04 *10.0), sin(1.03*10.))*0.5;
+        float l = 0.1 * abs(sin(time)) / length(p);
+        gl_FragColor = vec4(0.,l,l,1.0);
+      }
+    </script>
+
+
+
+
+
+    <script type="x-shader/x-vertex" id="vertex">
+      //attribute vec3 position;
+      void main() {
+        vec4 _position = vec4( position, 1.);
+        vec4 worldPosition = modelMatrix * _position;
+        vec4 viewPosition = viewMatrix * worldPosition;
+        vec4 perspectiveSpace = projectionMatrix * viewPosition;
+
+        gl_Position = perspectiveSpace;
+      }
+    </script>
 
 
     <script src="./js/main.js"></script>
