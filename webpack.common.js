@@ -33,7 +33,7 @@ const copy = new CopyWebpackPlugin(
 );
 
 module.exports = {
-  entry: ['./src/js/index.js', './src/css/style.scss'],
+  entry: ['babel-polyfill', './src/js/index.js', './src/css/style.scss'],
 
   output: {
     filename: 'js/[name].js',
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   devServer: {
-    https: true,
+    // https: true,
     stats: {
       children: false,
       modules: false

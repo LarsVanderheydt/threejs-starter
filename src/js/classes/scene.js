@@ -6,7 +6,8 @@ export default class Scene {
 
     /* Create camera */
     this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-    this.camera.position.z = 5;
+    this.camera.position.z = 3;
+    this.camera.position.y = 1;
     this.camera.name = 'camera';
 
 
@@ -19,7 +20,7 @@ export default class Scene {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    // this.scene.background = new THREE.Color( 0xff0000 );
+    this.scene.background = new THREE.Color( 0x000000 );
     this.renderer.setClearColor( 0x000000, 0 ); // the default
 
 
