@@ -13,7 +13,7 @@
     "babel-polyfill": "^6.26.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.5",
-    "three": "^0.105.2"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
